@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #56ab2f, #a8e063);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h2 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+
+        img {
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .status {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            margin-top: 20px;
+            text-align: left;
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 20px;
+            background: #2e7d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1b5e20;
+        }
+    </style>
+</head>
+
+<body>
+
+{% if plant %}
+<div class="container">
+
+    <h2>🌿 Prediction Result</h2>
+
+    <p><strong>Plant:</strong> {{ plant }}</p>
+
+    <p><strong>Disease:</strong> {{ disease }}</p>
+
+    <p class="status">
+        Status: 
+        <span class="color: {{ color }};">
+            {{ status }}
+        </span>
+    </p>
+
+    <p><strong>Confidence:</strong> {{ confidence }}%</p>
+
+    <img src="{{ url_for('static', filename=image_path) }}" width="300">
+
+    <div class="info-box">
+        <h4>Description:</h4>
+        <p>{{ description }}</p>
+
+        <h4>Treatment Suggestion:</h4>
+        <p>{{ treatment }}</p>
+    </div>
+
+    <a href="/" class="btn">Upload Another Image</a>
+
+</div>
+{% endif %}
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PlantCareAI 🌿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #00c853;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background: #00e676;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(0, 255, 128, 0.15);
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🌿 PlantCareAI</h1>
+    <p>Upload a plant leaf image to detect disease</p>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Analyze Plant</button>
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            Prediction: {{ prediction }}
+        </div>
+    {% endif %}
+
+    <div class="footer">
+        Powered by AI • TensorFlow • Flask
+    </div>
+</div>
+
+</body>
+</html>
