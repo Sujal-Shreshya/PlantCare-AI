@@ -59,6 +59,13 @@
         .btn:hover {
             background: #1b5e20;
         }
+        .healthy {
+    color: green;
+}
+
+.diseased {
+    color: red;
+}
     </style>
 </head>
 
@@ -74,11 +81,11 @@
     <p><strong>Disease:</strong> {{ disease }}</p>
 
     <p class="status">
-        Status: 
-        <span class="color: {{ color }};">
-            {{ status }}
-        </span>
-    </p>
+    Status:
+    <span class="{{ status|lower }}">
+        {{ status }}
+    </span>
+</p>
 
     <p><strong>Confidence:</strong> {{ confidence }}%</p>
 
